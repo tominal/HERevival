@@ -33,7 +33,6 @@ class CreateServersTable extends Migration {
              * If this server belongs to an NPC, it behaves differently.
              * For example, banks, government agencies, etc.
              */
-            $table->boolean('is_npc')->default(0);
             $table->integer('npc_id')->nullable();
 
             $table->timestamps();
