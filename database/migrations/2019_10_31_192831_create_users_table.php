@@ -13,14 +13,13 @@ class CreateUsersTable extends Migration {
     public function up() {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id')->unique();
-            $table->string('username');
+            $table->string('username')->unique();
             $table->string('password');
             $table->ipAddress('ip_address');
             $table->ipAddress('game_address')->unique();
-            $table->boolean('is_admin');
-            $table->integer('learning_step')->nullable();
-            $table->dateTime('premium')->nullable();
-            $table->dateTime('last_login')->nullable();
+            $table->boolean('is_admin')->default(0);
+            $table->integer('learning_step')->default(1)->nullable(); // null if user is done with tutorial
+            $table->text('webserver');
 
             $table->timestamps();
             $table->softDeletes();
