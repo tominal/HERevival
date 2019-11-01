@@ -12,17 +12,16 @@ class CreateUsersTable extends Migration {
      */
     public function up() {
         Schema::create('users', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id')->unique();
             $table->string('username');
             $table->string('password');
-            $table->string('game_ip');
-            $table->string('ip_address');
+            $table->ipAddress('ip_address');
+            $table->ipAddress('game_address')->unique();
             $table->boolean('is_admin');
-            $table->boolean('is_learning');
-            $table->dateTime('premium');
-            $table->dateTime('last_login');
+            $table->integer('learning_step')->nullable();
+            $table->dateTime('premium')->nullable();
+            $table->dateTime('last_login')->nullable();
 
-            $table->unique('id');
             $table->timestamps();
             $table->softDeletes();
         });
