@@ -17,11 +17,15 @@ class CreateUsersTable extends Migration {
             $table->string('password');
             $table->string('email')->unique();
             $table->string('game_password')->nullable();
+
             $table->ipAddress('ip_address');
             $table->ipAddress('game_address')->unique();
+
             $table->boolean('is_admin')->default(0);
-            $table->integer('learning_step')->default(1)->nullable(); // null if user is done with tutorial
-            $table->text('webserver')->nullable()->default(null);
+
+            $table->integer('learning_step')->default(1)->nullable();
+
+            $table->longText('webserver')->nullable()->default(null);
 
             $table->timestamps();
             $table->softDeletes();

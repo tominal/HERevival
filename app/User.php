@@ -34,4 +34,13 @@ class User extends Authenticatable {
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Relationships
+     */
+
+
+    public function servers() {
+        return $this->hasMany(\App\Server::class)->whereNull('npc_id');
+    }
 }

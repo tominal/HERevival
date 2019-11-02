@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Server;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -57,7 +59,7 @@ class RegisterController extends Controller {
      * Create a new user instance after a valid registration.
      *
      * @param array $data
-     * @return \App\User
+     * @return User
      */
     protected function create(array $data) {
         return User::create([
@@ -67,6 +69,21 @@ class RegisterController extends Controller {
             'ip_address'     => request()->ip(),
             'game_address'  => generate_ip(),
             'game_password' => Str::random(6)
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     * @param User $user
+     */
+    protected function registered(Request $request, $user) {
+        if (!auth()->check()) {
+            abort(404); // TODO: Error
+        }
+
+        Server::create([
+            'user_id' => $user->id,
+            'name' => 'Server #1',
         ]);
     }
 }
