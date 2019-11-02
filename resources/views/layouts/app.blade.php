@@ -66,7 +66,7 @@
                             <div class="btn-group mr-2">
                                 <ul class="list-unstyled">
                                     <li>
-                                        <h3 class="p-0 m-0">{{ rand(1,255) . '.'.rand(0,255) . '.'.rand(0,255) . '.'.rand(0,255) }}</h3>
+                                        <h3 class="p-0 m-0">{{ auth()->user()->game_address }}</h3>
                                     </li>
                                     <li>
                                         <small class="p-0 m-0"><i class="fa fa-clock"></i> {{ date('Y-m-d H:i') }}</small>
