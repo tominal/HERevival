@@ -16,12 +16,12 @@
                     <tr>
                         <td><i class="fad fa-hdd"></i></td>
                         <td>Hard Drive</td>
-                        <td>{{ auth()->user()->servers()->sum('hdd') / 1000 }} GB</td>
+                        <td>{{ auth()->user()->servers()->sum('hdd') / 1024 }} GB</td>
                     </tr>
                     <tr>
                         <td><i class="fad fa-memory"></i></td>
                         <td>Memory</td>
-                        <td>{{ auth()->user()->servers()->sum('ram') }} MB</td>
+                        <td>{{ auth()->user()->servers()->sum('ram') / 1024 }} MB</td>
                     </tr>
                     <tr>
                         <td><i class="fad fa-ethernet"></i></td>
