@@ -30,9 +30,9 @@
                         <a class="nav-link" href="#"><i class="fa fa-wrench"></i> Settings</a>
                     </li>
                     <li class="nav-item">
-                        <form action="/logout" method="post" class="nav-link">
+                        <form action="/logout" method="post" class="form-inline">
                             @csrf
-                            <button type="submit" style="background-color: transparent"><i class="fa fa-power-off"></i> Sign out</button>
+                            <button type="submit" class="nav-link" style="background-color: transparent;border: 0"><i class="fa fa-power-off"></i> Sign out</button>
                         </form>
                     </li>
                 </ul>
