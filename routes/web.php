@@ -24,6 +24,9 @@ Route::middleware(['auth'])->group(function(){
     Route::prefix('internet')->group(function() {
 
         Route::get('/', 'BrowserController@index')->name('get.browser.index');
+        Route::get('/login', 'BrowserController@login')->name('get.browser.login');
+        Route::get('/hack', 'BrowserController@hack')->name('get.browser.hack');
+        Route::post('/ip', 'BrowserController@setIp')->name('set.browser.ip');
 
     });
 });
