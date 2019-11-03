@@ -9,6 +9,7 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
               rel="stylesheet">
         <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/other.css') }}">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
     </head>
     <body>
@@ -20,7 +21,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-user"></i> damianos</a>
+                        <a class="nav-link" href="#"><i class="fa fa-user"></i> {{ auth()->guest() ? '' : auth()->user()->username }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fa fa-inbox"></i> Inbox</a>
@@ -29,7 +30,10 @@
                         <a class="nav-link" href="#"><i class="fa fa-wrench"></i> Settings</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-power-off"></i> Sign out</a>
+                        <form action="/logout" method="post" class="form-inline">
+                            @csrf
+                            <button type="submit" class="nav-link" style="background-color: transparent;border: 0"><i class="fa fa-power-off"></i> Sign out</button>
+                        </form>
                     </li>
                 </ul>
             </div>
@@ -40,8 +44,8 @@
                     <div class="sidebar-sticky">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link active" href="#">
-                                    <i class="fas fa-home"></i> Dashboard <span class="sr-only">(current)</span>
+                                <a class="nav-link {{ request()->route()->getName() !== "home" ?: 'active' }}" href="/home">
+                                    <i class="fas fa-home"></i> Dashboard
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -55,7 +59,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('get.browser.index') }}">
+                                <a class="nav-link {{ request()->route()->getName() !== "get.browser.index" ?: 'active' }}" href="{{ route('get.browser.index') }}">
                                     <i class="fas fa-globe-europe"></i> Internet
                                     </a>
                                 </li>
@@ -74,7 +78,7 @@
                                         </li>
                                         <li>
                                             <small class="p-0 m-0 float-left"><i class="fad fa-clock"></i> {{ date('Y-m-d H:i') }}</small>
-                                            <small class="p-0 m-0 float-right"><i class="fad fa-users"></i> 692</small>
+                                            <small class="p-0 m-0 float-right"><i class="fad fa-users"></i> {{ rand() % 100 }}</small>
                                         </li>
                                         <li>
                                             <small class="p-0 m-0 float-left"><i class="fad fa-star"></i> 1,212,214 (#1)</small>

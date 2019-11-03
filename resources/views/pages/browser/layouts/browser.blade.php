@@ -5,8 +5,9 @@
         <div class="col-md-8">
             <div class="card mb-5">
                 <div class="card-body">
-                    <form>
-                        <input class="form-control" placeholder="{{ session('browser_session') }}">
+                    <form method="post" action="/internet/ip">
+                        @csrf
+                        <input class="form-control" name="ip" placeholder="{{ session('browser_session') }}">
                     </form>
                 </div>
             </div>
@@ -14,13 +15,13 @@
                 <div class="card-header">
                     <ul class="nav nav-pills">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#"><i class="fad fa-home-lg"></i> Index</a>
+                            <a class="nav-link {{ request()->route()->getName() !== "get.browser.index" ?: 'active' }}" href="{{ route('get.browser.index') }}"><i class="fad fa-home-lg"></i> Index</a>
                         </li>
                         <li class="nav-item border rounded ml-2">
-                            <a class="nav-link" href="#"><i class="fad fa-sign-in"></i> Login</a>
+                            <a class="nav-link {{ request()->route()->getName() !== "get.browser.login" ?: 'active' }}" href="{{ route('get.browser.login') }}"><i class="fad fa-sign-in"></i> Login</a>
                         </li>
                         <li class="nav-item border rounded ml-2">
-                            <a class="nav-link" href="#"><i class="fad fa-terminal"></i> Hack</a>
+                            <a class="nav-link {{ request()->route()->getName() !== "get.browser.hack" ?: 'active' }}" href="{{ route('get.browser.hack') }}"><i class="fad fa-terminal"></i> Hack</a>
                         </li>
                     </ul>
                 </div>
