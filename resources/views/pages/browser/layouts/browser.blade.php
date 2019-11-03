@@ -14,14 +14,14 @@
             <div class="card mb-3">
                 <div class="card-header">
                     <ul class="nav nav-pills">
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->route()->getName() !== "get.browser.index" ?: 'active' }}" href="{{ route('get.browser.index') }}"><i class="fad fa-home-lg"></i> Index</a>
+                        <li class="nav-item{{ request()->route()->getName() !== "get.browser.index" ? ' border rounded' : '' }} ml-2">
+                            <a class="nav-link{{ request()->route()->getName() !== "get.browser.index" ? '' : ' active' }}" href="{{ route('get.browser.index') }}"><i class="fad fa-home-lg"></i> Index</a>
                         </li>
-                        <li class="nav-item border rounded ml-2">
-                            <a class="nav-link {{ request()->route()->getName() !== "get.browser.login" ?: 'active' }}" href="{{ route('get.browser.login') }}"><i class="fad fa-sign-in"></i> Login</a>
+                        <li class="nav-item{{ request()->route()->getName() !== "get.browser.login" ? ' border rounded' : '' }} ml-2">
+                            <a class="nav-link{{ request()->route()->getName() !== "get.browser.login" ? '' : ' active' }}" href="{{ route('get.browser.login') }}"><i class="fad fa-sign-in"></i> Login</a>
                         </li>
-                        <li class="nav-item border rounded ml-2">
-                            <a class="nav-link {{ request()->route()->getName() !== "get.browser.hack" ?: 'active' }}" href="{{ route('get.browser.hack') }}"><i class="fad fa-terminal"></i> Hack</a>
+                        <li class="nav-item{{ request()->route()->getName() !== "get.browser.hack" ? ' border rounded' : '' }} ml-2">
+                            <a class="nav-link{{ request()->route()->getName() !== "get.browser.hack" ? '' : ' active' }}" href="{{ route('get.browser.hack') }}"><i class="fad fa-terminal"></i> Hack</a>
                         </li>
                     </ul>
                 </div>

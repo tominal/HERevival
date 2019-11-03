@@ -42,15 +42,4 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-
-    public function login(Request $request)
-    {
-        if(Auth::attempt( $request->only('email', 'password'), (isset($request->remember) ? 1 : 0) ))
-            return redirect()->route('home');
-        else {
-            session()->flashInput($request->input());
-            session(['login-error' => 'Incorrect credentials.']);
-            return redirect()->route('login');
-        }
-    }
 }
