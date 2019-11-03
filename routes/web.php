@@ -18,3 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::prefix('internet')->group(function() {
+
+    Route::get('/', 'BrowserController@index')->name('get.browser.index');
+
+});

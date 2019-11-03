@@ -28,4 +28,24 @@ class Npc extends Model {
      * @var array
      */
     protected $hidden = [];
+
+    public function getHumanTypeAttribute() {
+        switch ($this->type) {
+            case 0: return 'npc';
+            case 1: return 'whois';
+            case 2: return 'bank';
+            case 3: return 'puzzle';
+            case 4: return 'riddle';
+            case 5: return 'government';
+            case 6: return 'doom';
+        }
+    }
+
+    /**
+     * Relationships
+     */
+
+    public function npcs() {
+        return $this->hasMany(\App\Npc::class);
+    }
 }
