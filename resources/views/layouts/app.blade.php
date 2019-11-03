@@ -14,20 +14,25 @@
     <body>
         <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow navbar-expand-lg">
             <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">HERevival</a>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-user"></i> damianos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-inbox"></i> Inbox</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-wrench"></i> Settings</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-power-off"></i> Sign out</a>
-                </li>
-            </ul>
+            <button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fa fa-user"></i> damianos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fa fa-inbox"></i> Inbox</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fa fa-wrench"></i> Settings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fa fa-power-off"></i> Sign out</a>
+                    </li>
+                </ul>
+            </div>
         </nav>
         <div class="container-fluid">
             <div class="row">
@@ -50,35 +55,36 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{ route('get.browser.index') }}">
                                     <i class="fas fa-globe-europe"></i> Internet
-                                </a>
-                            </li>
-                        </ul>
+                                    </a>
+                                </li>
+                            </ul>
                     </div>
                 </nav>
                 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-                    <div
-                        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 mb-3 border-bottom">
-                        <h1 class="h2">Dashboard</h1>
-                        <div class="btn-toolbar mb-2 mb-md-0">
-                            <div class="btn-group mr-2">
-                                <ul class="list-unstyled">
-                                    <li>
-                                        <h3 class="p-0 m-0">{{ auth()->user()->game_address }}</h3>
-                                    </li>
-                                    <li>
-                                        <small class="p-0 m-0"><i class="fa fa-clock"></i> {{ date('Y-m-d H:i') }}
-                                        </small>
-                                        <small class="p-0 m-0"><i class="fa fa-users"></i> 692</small>
-                                    </li>
-                                    <li>
-                                        <small class="p-0 m-0"><i class="fas fa-star"></i> 1,212,214 (#1)</small>
-                                    </li>
-                                </ul>
+                    @if (isset($page_name))
+                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 mb-3 border-bottom">
+                            <h1 class="h2">{{ $page_name }}</h1>
+                            <div class="btn-toolbar mb-2 mb-md-0">
+                                <div class="btn-group mr-2">
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <h3 class="p-0 m-0">{{ auth()->user()->game_address }}</h3>
+                                        </li>
+                                        <li>
+                                            <small class="p-0 m-0 float-left"><i class="fad fa-clock"></i> {{ date('Y-m-d H:i') }}</small>
+                                            <small class="p-0 m-0 float-right"><i class="fad fa-users"></i> 692</small>
+                                        </li>
+                                        <li>
+                                            <small class="p-0 m-0 float-left"><i class="fad fa-star"></i> 1,212,214 (#1)</small>
+                                            <small class="p-0 m-0 float-right"><i class="fad fa-dollar-sign"></i> 15.000</small>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endif
                     @yield('content')
                 </main>
             </div>

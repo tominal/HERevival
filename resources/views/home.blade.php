@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['page_name' => 'Control Panel'])
 
 @section('content')
     <div class="row">
