@@ -66,7 +66,7 @@ class RegisterController extends Controller {
             'username'      => $data['name'],
             'email'         => $data['email'],
             'password'      => Hash::make($data['password']),
-            'ip_address'     => request()->ip(),
+            'ip_address'    => request()->ip(),
             'game_address'  => generate_ip(),
             'game_password' => Str::random(6)
         ]);
